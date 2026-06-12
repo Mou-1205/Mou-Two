@@ -1,0 +1,15 @@
+{
+  "envId": "your-env-id",
+  "region": "ap-shanghai",
+  "cloudrun": {
+    "serviceName": "personal-site",
+    "src": {
+      "dockerfile": "Dockerfile"
+    },
+    "cpu": 0.25,
+    "mem": 0.5,
+    "minNum": 0,
+    "maxNum": 1,
+    "containerPort": 80
+  }
+}
