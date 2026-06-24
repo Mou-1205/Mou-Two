@@ -68,7 +68,8 @@
     .nav.scrolled::after { opacity: 1; }
     .nav.scrolled { background: rgba(246, 244, 240, 0.55); backdrop-filter: blur(24px) saturate(1.2); -webkit-backdrop-filter: blur(24px) saturate(1.2); padding: 14px 0; border-bottom: none; }
     .nav .container { display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; color: var(--text-primary); text-decoration: none; letter-spacing: -0.5px; }
+    .nav-logo { display: inline-flex; align-items: center; gap: 10px; font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; color: var(--text-primary); text-decoration: none; letter-spacing: -0.5px; }
+    .nav-avatar { width: 36px; height: 36px; border-radius: 6px; object-fit: cover; }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a { position: relative; text-decoration: none; color: var(--text-muted); font-size: 15px; font-weight: 500; letter-spacing: 0.3px; transition: color 0.25s ease; padding: 8px 12px; }
     .nav-links a:hover { color: var(--text-primary); }
@@ -81,7 +82,7 @@
 
     /* ─── Hero ─── */
     .hero { position: relative; padding: 180px 0 140px; text-align: center; overflow: hidden; background: var(--bg); }
-    .hero-bg { position: absolute; inset: 0; background: url('assets/飞天4.png') center 100px / 1600px auto no-repeat; z-index: 0; }
+    .hero-bg { position: absolute; inset: 0; background: url('assets/背景.png') center 100px / 1600px auto no-repeat; z-index: 0; }
     .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, var(--bg) 0%, transparent 18%, transparent 70%, var(--bg) 100%), linear-gradient(to right, var(--bg) 0%, transparent 15%, transparent 85%, var(--bg) 100%); pointer-events: none; }
     .hero-mask { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; font-size: 13px; color: var(--text-muted); font-weight: 500; margin-bottom: 36px; box-shadow: var(--shadow-sm); }
@@ -229,6 +230,17 @@
     .nav-mobile-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-mobile-btn.open span:nth-child(2) { opacity: 0; }
     .nav-mobile-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    /* ─── Sponsor Modal ─── */
+    .sponsor-overlay { display: flex; position: fixed; inset: 0; background: rgba(26,26,23,0); backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); z-index: 2000; align-items: center; justify-content: center; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.4s, backdrop-filter 0.4s ease, -webkit-backdrop-filter 0.4s ease; }
+    .sponsor-overlay.open { opacity: 1; visibility: visible; pointer-events: auto; background: rgba(26,26,23,0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    .sponsor-modal { background: var(--surface); border-radius: var(--radius); padding: 32px; max-width: 420px; width: 90%; position: relative; box-shadow: var(--shadow-lg); text-align: center; opacity: 0; transform: translateY(40px) scale(0.97); transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.05s, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.05s; }
+    .sponsor-overlay.open .sponsor-modal { opacity: 1; transform: translateY(0) scale(1); }
+    .sponsor-modal img { width: 100%; border-radius: var(--radius-sm); }
+    .sponsor-modal p { margin-top: 16px; font-size: 14px; color: var(--text-muted); }
+    .sponsor-close { position: absolute; top: 12px; right: 12px; width: 32px; height: 32px; border-radius: 50%; border: none; background: var(--bg); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s ease; }
+    .sponsor-close:hover { background: var(--border); }
+    .sponsor-close svg { width: 16px; height: 16px; stroke: var(--text-muted); stroke-width: 2; fill: none; }
+
   </style>
 </head>
 <body>
@@ -236,7 +248,7 @@
   <!-- ═══ 导航栏 ═══ -->
   <nav class="nav" id="nav" aria-label="主导航">
     <div class="container">
-      <a href="#" class="nav-logo">某炜</a>
+      <a href="#" class="nav-logo"><img src="assets/头像.jpg" alt="某炜" class="nav-avatar">某炜</a>
       <ul class="nav-links">
         <li><a href="#skills">技能</a></li>
         <li><a href="#journey">成长</a></li>
@@ -510,7 +522,7 @@
           <h4>联系方式</h4>
           <ul>
             <li><a href="mailto:hello@example.com">邮箱</a></li>
-            <li><a href="#">赞助</a></li>
+            <li><a href="#" id="sponsorBtn">赞助</a></li>
             <li><a href="#">抖音</a></li>
           </ul>
         </div>
@@ -531,6 +543,17 @@
       </div>
     </div>
   </footer>
+
+  <!-- 赞助弹窗 -->
+  <div class="sponsor-overlay" id="sponsorOverlay">
+    <div class="sponsor-modal">
+      <button class="sponsor-close" id="sponsorClose" aria-label="关闭">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <img src="assets/赞助.jpg" alt="微信赞赏码">
+      <p>扫码请我喝杯咖啡 谢谢~~</p>
+    </div>
+  </div>
 
   <script>
     (function() {
@@ -727,6 +750,23 @@
       }
       revealOnScroll();
       window.addEventListener('scroll', revealOnScroll, { passive: true });
+
+      // ── 赞助弹窗 ──
+      var sponsorBtn = document.getElementById('sponsorBtn');
+      var sponsorOverlay = document.getElementById('sponsorOverlay');
+      var sponsorClose = document.getElementById('sponsorClose');
+      if (sponsorBtn && sponsorOverlay) {
+        sponsorBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          sponsorOverlay.classList.add('open');
+        });
+        sponsorClose.addEventListener('click', function() {
+          sponsorOverlay.classList.remove('open');
+        });
+        sponsorOverlay.addEventListener('click', function(e) {
+          if (e.target === sponsorOverlay) sponsorOverlay.classList.remove('open');
+        });
+      }
     })();
   </script>
 </body>
