@@ -27,7 +27,7 @@
 
 ## 预览
 
-访问 [mouy.site](https://mouy.site) 在线预览，或直接打开 `index.html`。
+直接打开 `index.html` 即可预览。
 
 ## 本地运行
 
