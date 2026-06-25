@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>某炜 — 开发者 & 学生</title>
+  <title>某炜的个人站</title>
   <meta name="description" content="某炜 的个人网站。学生开发者，热衷底层技术、逆向工程与独立游戏。">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234a7c59'/><text x='50' y='68' font-family='Georgia,serif' font-size='52' font-weight='bold' fill='white' text-anchor='middle'>M</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -201,7 +201,7 @@
 
     /* ─── Responsive ─── */
     @media (max-width: 900px) {
-      .features-grid, .pricing-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+      .features-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
       .steps { grid-template-columns: 1fr; gap: 40px; }
       .steps::before { display: none; }
       .testimonials-grid { grid-template-columns: 1fr; }
@@ -230,6 +230,19 @@
     .nav-mobile-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-mobile-btn.open span:nth-child(2) { opacity: 0; }
     .nav-mobile-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ─── Reduced Motion ─── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+      .hero-mask { display: none; }
+    }
+
     /* ─── Sponsor Modal ─── */
     .sponsor-overlay { display: flex; position: fixed; inset: 0; background: rgba(26,26,23,0); backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); z-index: 2000; align-items: center; justify-content: center; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.4s, backdrop-filter 0.4s ease, -webkit-backdrop-filter 0.4s ease; }
     .sponsor-overlay.open { opacity: 1; visibility: visible; pointer-events: auto; background: rgba(26,26,23,0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
@@ -277,11 +290,11 @@
       <div class="reveal">
         <div class="hero-badge">
           <span class="hero-badge-dot"></span>
-          学生 · 开发者 · 探索者
+          初学者 · 开发者 · 探索者
         </div>
       </div>
       <h1 class="reveal">以好奇心构建，<br><em>以清晰度交付。</em></h1>
-      <p class="hero-desc reveal">我是 某炜 —— 一个热衷于探究底层原理的学生开发者。从逆向二进制文件到打造实用工具，我编写解决真实问题的代码。</p>
+      <p class="hero-desc reveal">我是 某炜 — 一个热衷于探究底层原理的初学者。从理解原理到打造实用工具，我编写解决真实问题的代码。</p>
       <div class="hero-actions reveal">
         <a href="#projects" class="btn btn-primary">查看我的作品</a>
         <a href="#contact" class="btn btn-secondary">与我联系</a>
@@ -314,11 +327,11 @@
                 </div>
                 <div class="screenshot-kpi">
                   <div class="screenshot-kpi-label">仓库数量</div>
-                  <div class="screenshot-kpi-value">23<span class="screenshot-kpi-change">+4</span></div>
+                  <div class="screenshot-kpi-value">4<span class="screenshot-kpi-change">+4</span></div>
                 </div>
                 <div class="screenshot-kpi">
                   <div class="screenshot-kpi-label">编程语言</div>
-                  <div class="screenshot-kpi-value">7</div>
+                  <div class="screenshot-kpi-value">5</div>
                 </div>
               </div>
               <div class="screenshot-bars">
@@ -341,8 +354,8 @@
         <span class="logo-item">C++</span>
         <span class="logo-item">JavaScript</span>
         <span class="logo-item">Linux</span>
-        <span class="logo-item">逆向工程</span>
-        <span class="logo-item">Godot</span>
+        <span class="logo-item">Flutter</span>
+        <span class="logo-item">Rust</span>
       </div>
     </div>
   </section>
@@ -353,7 +366,8 @@
       <div class="section-header reveal">
         <p class="section-eyebrow">技能</p>
         <h2 class="section-title">专注深耕，<br>广泛好奇。</h2>
-        <p class="section-desc">我优先理解底层基础，再在上层叠加工具。每一项技能都通过实战项目打磨而成。</p>
+        <p class="section-desc">我优先理解底层基础，再在上层叠加工具。使每项技能都通过实战项目打磨而成。*</p>
+        <p style="font-size:11px;color:var(--text-muted);opacity:0.5;margin-top:8px;font-style:italic;">* 瞎吹的，全靠 AI 和 Vibe Coding。</p>
       </div>
       <div class="features-grid">
         <div class="feature-card reveal">
@@ -365,38 +379,38 @@
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
-          <h3>逆向工程</h3>
-          <p>使用 jadx 进行 APK 反编译、dex 分析、资源提取。从内部理解应用的运行机制。</p>
+          <h3>Rust 开发</h3>
+          <p>使用 Rust 编写高性能、内存安全的系统级程序。零成本抽象、无数据竞争，从编译期杜绝隐患。</p>
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           </div>
           <h3>全栈 Web 开发</h3>
-          <p>Python/FastAPI 后端，简洁的 HTML/CSS 前端，SQLite 存储。构建快速且易维护的工具。</p>
+          <p>Go 后端，简洁的 HTML/CSS 前端，SQLite 存储。构建快速且易维护的工具。</p>
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
           </div>
-          <h3>自动化与脚本</h3>
-          <p>用 Python 脚本自动化重复性工作流。Shell 脚本用于系统管理和构建流水线。</p>
+          <h3>JavaScript</h3>
+          <p>使用 Node.js 和 JavaScript 构建全栈应用与工具链。从前端到服务端，一门语言贯穿始终。</p>
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
           </div>
-          <h3>游戏开发</h3>
-          <p>使用 Godot 引擎开发 2D 游戏。程序化生成、状态机、像素艺术流水线 —— 从零构建游戏世界。</p>
+          <h3>移动开发</h3>
+          <p>使用 Flutter 构建跨平台移动应用。一套代码，iOS 和 Android 双端运行，追求原生级体验。</p>
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           </div>
           <h3>工具链与 DevOps</h3>
-          <p>Git 工作流、Docker 容器、Nginx 反向代理、GitHub Actions CI/CD。可靠地交付代码。</p>
+          <p>Git 版本管理、Docker 容器化、Nginx 部署、GitHub Actions 自动化流水线。从开发到上线，全程可控。</p>
         </div>
       </div>
     </div>
@@ -408,7 +422,7 @@
       <div class="section-header reveal" style="text-align:center;">
         <p class="section-eyebrow">成长历程</p>
         <h2 class="section-title" style="margin-left:auto;margin-right:auto;">从好奇心<br>到真实能力。</h2>
-        <p class="section-desc" style="margin-left:auto;margin-right:auto;">每个项目都始于一个问题。以下是我将问题转化为可运行软件的方式。</p>
+        <p class="section-desc" style="margin-left:auto;margin-right:auto;">每个项目都始于一个问题。以下是我将问题转化为可运行项目的方式。</p>
       </div>
       <div class="steps">
         <div class="step reveal">
@@ -424,7 +438,7 @@
         <div class="step reveal">
           <div class="step-number">3</div>
           <h3>打磨与交付</h3>
-          <p>重构、文档化、发布。好代码是能解决问题且易于理解的代码。</p>
+          <p>重构、文档化、发布。打造能解决问题且易于理解的好代码。</p>
         </div>
       </div>
     </div>
@@ -437,7 +451,18 @@
         <p class="section-eyebrow">项目</p>
         <h2 class="section-title">我亲手打造的<br>作品。</h2>
       </div>
-      <div class="testimonials-grid">
+      <!-- 置顶项目 -->
+      <a href="https://mouy.site" target="_blank" rel="noopener noreferrer" class="testimonial-card reveal" style="text-decoration:none;color:inherit;max-width:560px;margin:0 auto 8px;display:block;padding:48px 36px;">
+        <p class="testimonial-quote">我的技术博客 —— 记录学习笔记、项目实践与底层思考。基于 Astro 构建，支持全文搜索、Obsidian 同步和暗色模式。</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:var(--accent-light);color:var(--accent);">B</div>
+          <div>
+            <div class="testimonial-name">Mou Blog</div>
+            <div class="testimonial-role">Astro · TypeScript · Svelte</div>
+          </div>
+        </div>
+      </a>
+      <div class="testimonials-grid" style="margin-top:16px;">
         <a href="https://github.com/Mou-1205/wechat-mimocode" target="_blank" rel="noopener noreferrer" class="testimonial-card reveal" style="text-decoration:none;color:inherit;">
           <p class="testimonial-quote">通过微信与 MiMoCode 对话，就像和朋友聊天一样。基于微信官方 ClawBot API，支持文字、图片、语音和文件收发，扫码即用，无封号风险。</p>
           <div class="testimonial-author">
@@ -458,16 +483,6 @@
             </div>
           </div>
         </a>
-        <a href="https://github.com/Mou-1205/Mou" target="_blank" rel="noopener noreferrer" class="testimonial-card reveal" style="text-decoration:none;color:inherit;">
-          <p class="testimonial-quote">基于 Astro + Firefly 主题构建的个人博客，1000+ commits，支持 Obsidian 笔记同步、全文搜索、多语言和暗色模式。</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:var(--accent-light);color:var(--accent);">B</div>
-            <div>
-              <div class="testimonial-name">Mou Blog</div>
-              <div class="testimonial-role">Astro · TypeScript · Svelte</div>
-            </div>
-          </div>
-        </a>
         <a href="https://github.com/Mou-1205/Mou-Two" target="_blank" rel="noopener noreferrer" class="testimonial-card reveal" style="text-decoration:none;color:inherit;">
           <p class="testimonial-quote">我的个人网站 —— 纯 HTML/CSS/JS 单文件，墨迹擦除动效、滚动渐入动画、响应式布局。零依赖，从零构建。</p>
           <div class="testimonial-author">
@@ -478,6 +493,16 @@
             </div>
           </div>
         </a>
+        <div class="testimonial-card reveal" style="opacity:0.4;">
+          <p class="testimonial-quote" style="color:var(--text-muted);">即将揭晓……</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">?</div>
+            <div>
+              <div class="testimonial-name">待定</div>
+              <div class="testimonial-role">—</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -499,7 +524,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <span class="footer-logo">某炜</span>
-          <p>某炜，Vibe Coding。写代码像写诗，修 bug 像破案。偶尔翻车，但从不缺席。</p>
+          <p>热爱 Vibe Codin。写代码像写诗，修 bug 像破案。偶尔翻车，但从不缺席。</p>
         </div>
         <div class="footer-col">
           <h4>导航</h4>
@@ -523,12 +548,12 @@
           <ul>
             <li><a href="mailto:2506054842@qq.com">邮箱</a></li>
             <li><a href="#" id="sponsorBtn">赞助</a></li>
-            <li><a href="#">抖音</a></li>
+            <li><a href="https://v.douyin.com/dZ95kkGCwJI/" target="_blank" rel="noopener noreferrer">抖音</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 某炜. 以好奇心构建，以用心交付。 <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">粤ICP备2026081944号</a></p>
+        <p>&copy; 2026 某炜. 以好奇心构建，以用心交付。 <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noopener noreferrer">粤ICP备2026081944号</a></p>
         <div class="footer-social">
           <a href="https://github.com/Mou-1205" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
@@ -559,16 +584,19 @@
     (function() {
       'use strict';
 
+      // ── Reduced Motion 检测 ──
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
       // ── 导航栏滚动 ──
-      var nav = document.getElementById('nav');
+      const nav = document.getElementById('nav');
       window.addEventListener('scroll', function() {
         if (window.scrollY > 40) nav.classList.add('scrolled');
         else nav.classList.remove('scrolled');
       }, { passive: true });
 
       // ── 移动端菜单 ──
-      var btn = document.getElementById('mobileBtn');
-      var panel = document.getElementById('mobilePanel');
+      const btn = document.getElementById('mobileBtn');
+      const panel = document.getElementById('mobilePanel');
 
       function closeMenu() {
         btn.classList.remove('open');
@@ -587,174 +615,180 @@
         panel.classList.contains('open') ? closeMenu() : openMenu();
       });
 
-      var mobileLinks = panel.querySelectorAll('a');
-      for (var i = 0; i < mobileLinks.length; i++) {
+      const mobileLinks = panel.querySelectorAll('a');
+      for (let i = 0; i < mobileLinks.length; i++) {
         mobileLinks[i].addEventListener('click', closeMenu);
       }
 
       // ── 平滑锚点滚动（事件委托）──
       document.addEventListener('click', function(e) {
-        var a = e.target.closest('a[href^="#"]');
+        const a = e.target.closest('a[href^="#"]');
         if (!a) return;
-        var href = a.getAttribute('href');
+        const href = a.getAttribute('href');
         if (href === '#') return;
-        var target = document.querySelector(href);
+        const target = document.querySelector(href);
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
 
-      // ── Hero 墨迹擦除效果 ──
-      (function() {
-        var hero = document.getElementById('hero');
-        var canvas = document.getElementById('heroMask');
-        if (!hero || !canvas) return;
+      // ── Hero 墨迹擦除效果（reduced-motion 下跳过）──
+      if (!prefersReducedMotion.matches) {
+        (function() {
+          const hero = document.getElementById('hero');
+          const canvas = document.getElementById('heroMask');
+          if (!hero || !canvas) return;
 
-        var ctx = canvas.getContext('2d');
-        if (!ctx) return;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) return;
 
-        var MASK = '246, 244, 240';
-        var R_START = 12;
-        var R_END = 180;
-        var R_VARY = 0.35;
-        var LIFETIME = 700;
-        var STAMP_STEP = 8;
-        var MAX_STAMPS = 250;
-        var DPR = Math.min(window.devicePixelRatio || 1, 2);
+          const MASK = '246, 244, 240';
+          const R_START = 12;
+          const R_END = 180;
+          const R_VARY = 0.35;
+          const LIFETIME = 700;
+          const STAMP_STEP = 8;
+          const MAX_STAMPS = 250;
+          const DPR = Math.min(window.devicePixelRatio || 1, 2);
 
-        var w = 0, h = 0;
+          let w = 0, h = 0;
 
-        function resize() {
-          var rect = hero.getBoundingClientRect();
-          w = rect.width;
-          h = rect.height;
-          canvas.width = Math.round(w * DPR);
-          canvas.height = Math.round(h * DPR);
-          ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-          ctx.globalCompositeOperation = 'source-over';
-          ctx.fillStyle = 'rgb(' + MASK + ')';
-          ctx.fillRect(0, 0, w, h);
-        }
+          function resize() {
+            const rect = hero.getBoundingClientRect();
+            w = rect.width;
+            h = rect.height;
+            canvas.width = Math.round(w * DPR);
+            canvas.height = Math.round(h * DPR);
+            ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.fillStyle = 'rgb(' + MASK + ')';
+            ctx.fillRect(0, 0, w, h);
+          }
 
-        if (document.readyState === 'complete') { resize(); }
-        else { window.addEventListener('load', resize); }
-        window.addEventListener('resize', resize);
+          if (document.readyState === 'complete') { resize(); }
+          else { window.addEventListener('load', resize); }
+          window.addEventListener('resize', resize);
 
-        var stamps = [];
-        var lastX = null, lastY = null;
+          const stamps = [];
+          let lastX = null, lastY = null;
 
-        function addStamp(x, y) {
-          if (stamps.length >= MAX_STAMPS) stamps.shift();
-          stamps.push({
-            x: x, y: y,
-            born: performance.now(),
-            seed: Math.random() * Math.PI * 2,
-            rmax: R_END * (1 - R_VARY + Math.random() * R_VARY),
-          });
-        }
+          function addStamp(x, y) {
+            if (stamps.length >= MAX_STAMPS) stamps.shift();
+            stamps.push({
+              x: x, y: y,
+              born: performance.now(),
+              seed: Math.random() * Math.PI * 2,
+              rmax: R_END * (1 - R_VARY + Math.random() * R_VARY),
+            });
+          }
 
-        function stampAlong(x, y) {
-          if (lastX === null) {
-            addStamp(x, y);
-          } else {
-            var dx = x - lastX, dy = y - lastY;
-            var dist = Math.hypot(dx, dy);
-            var steps = Math.max(1, Math.ceil(dist / STAMP_STEP));
-            for (var i = 1; i <= steps; i++) {
-              addStamp(lastX + (dx * i) / steps, lastY + (dy * i) / steps);
+          function stampAlong(x, y) {
+            if (lastX === null) {
+              addStamp(x, y);
+            } else {
+              const dx = x - lastX, dy = y - lastY;
+              const dist = Math.hypot(dx, dy);
+              const steps = Math.max(1, Math.ceil(dist / STAMP_STEP));
+              for (let i = 1; i <= steps; i++) {
+                addStamp(lastX + (dx * i) / steps, lastY + (dy * i) / steps);
+              }
             }
+            lastX = x;
+            lastY = y;
           }
-          lastX = x;
-          lastY = y;
-        }
 
-        function carveInk(x, y, r, alpha, seed) {
-          var g = ctx.createRadialGradient(x, y, 0, x, y, r);
-          g.addColorStop(0, 'rgba(0,0,0,' + 0.9 * alpha + ')');
-          g.addColorStop(0.15, 'rgba(0,0,0,' + 0.85 * alpha + ')');
-          g.addColorStop(0.35, 'rgba(0,0,0,' + 0.65 * alpha + ')');
-          g.addColorStop(0.55, 'rgba(0,0,0,' + 0.35 * alpha + ')');
-          g.addColorStop(0.75, 'rgba(0,0,0,' + 0.12 * alpha + ')');
-          g.addColorStop(1, 'rgba(0,0,0,0)');
-          ctx.fillStyle = g;
-          ctx.beginPath();
-          var segs = 64;
-          for (var i = 0; i <= segs; i++) {
-            var a = (i / segs) * Math.PI * 2;
-            var wob = 0.9 + 0.06 * Math.sin(a * 3 + seed) + 0.03 * Math.sin(a * 5 + seed * 1.7) + 0.02 * Math.sin(a * 9 + seed * 0.5);
-            var rr = r * wob;
-            var px = x + Math.cos(a) * rr;
-            var py = y + Math.sin(a) * rr;
-            if (i === 0) ctx.moveTo(px, py);
-            else ctx.lineTo(px, py);
+          function carveInk(x, y, r, alpha, seed) {
+            const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+            g.addColorStop(0, 'rgba(0,0,0,' + 0.9 * alpha + ')');
+            g.addColorStop(0.15, 'rgba(0,0,0,' + 0.85 * alpha + ')');
+            g.addColorStop(0.35, 'rgba(0,0,0,' + 0.65 * alpha + ')');
+            g.addColorStop(0.55, 'rgba(0,0,0,' + 0.35 * alpha + ')');
+            g.addColorStop(0.75, 'rgba(0,0,0,' + 0.12 * alpha + ')');
+            g.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = g;
+            ctx.beginPath();
+            const segs = 64;
+            for (let i = 0; i <= segs; i++) {
+              const a = (i / segs) * Math.PI * 2;
+              const wob = 0.9 + 0.06 * Math.sin(a * 3 + seed) + 0.03 * Math.sin(a * 5 + seed * 1.7) + 0.02 * Math.sin(a * 9 + seed * 0.5);
+              const rr = r * wob;
+              const px = x + Math.cos(a) * rr;
+              const py = y + Math.sin(a) * rr;
+              if (i === 0) ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
+            }
+            ctx.closePath();
+            ctx.fill();
           }
-          ctx.closePath();
-          ctx.fill();
-        }
 
-        var running = false;
+          let running = false;
 
-        function loop() {
-          var now = performance.now();
-          ctx.globalCompositeOperation = 'source-over';
-          ctx.fillStyle = 'rgb(' + MASK + ')';
-          ctx.fillRect(0, 0, w, h);
-          ctx.globalCompositeOperation = 'destination-out';
-          for (var i = stamps.length - 1; i >= 0; i--) {
-            var t = (now - stamps[i].born) / LIFETIME;
-            if (t >= 1) { stamps.splice(i, 1); continue; }
-            var ease = 1 - Math.pow(1 - t, 3);
-            var r = R_START + (stamps[i].rmax - R_START) * ease;
-            var alpha = 1 - t * t;
-            carveInk(stamps[i].x, stamps[i].y, r, alpha, stamps[i].seed);
+          function loop() {
+            const now = performance.now();
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.fillStyle = 'rgb(' + MASK + ')';
+            ctx.fillRect(0, 0, w, h);
+            ctx.globalCompositeOperation = 'destination-out';
+            for (let i = stamps.length - 1; i >= 0; i--) {
+              const t = (now - stamps[i].born) / LIFETIME;
+              if (t >= 1) { stamps.splice(i, 1); continue; }
+              const ease = 1 - Math.pow(1 - t, 3);
+              const r = R_START + (stamps[i].rmax - R_START) * ease;
+              const alpha = 1 - t * t;
+              carveInk(stamps[i].x, stamps[i].y, r, alpha, stamps[i].seed);
+            }
+            if (stamps.length) requestAnimationFrame(loop);
+            else running = false;
           }
-          if (stamps.length) requestAnimationFrame(loop);
-          else running = false;
-        }
 
-        function start() {
-          if (!running) { running = true; requestAnimationFrame(loop); }
-        }
-
-        hero.addEventListener('mouseenter', function(e) {
-          var rect = hero.getBoundingClientRect();
-          lastX = e.clientX - rect.left;
-          lastY = e.clientY - rect.top;
-          stampAlong(lastX, lastY);
-          start();
-        });
-
-        hero.addEventListener('mousemove', function(e) {
-          var rect = hero.getBoundingClientRect();
-          stampAlong(e.clientX - rect.left, e.clientY - rect.top);
-          start();
-        });
-
-        hero.addEventListener('mouseleave', function() {
-          lastX = null;
-          lastY = null;
-        });
-      })();
-
-      // ── 滚动渐入动画 ──
-      function revealOnScroll() {
-        var reveals = document.querySelectorAll('.reveal:not(.visible)');
-        var windowH = window.innerHeight;
-        for (var i = 0; i < reveals.length; i++) {
-          var rect = reveals[i].getBoundingClientRect();
-          if (rect.top < windowH - 60) {
-            reveals[i].classList.add('visible');
+          function start() {
+            if (!running) { running = true; requestAnimationFrame(loop); }
           }
-        }
+
+          hero.addEventListener('mouseenter', function(e) {
+            const rect = hero.getBoundingClientRect();
+            lastX = e.clientX - rect.left;
+            lastY = e.clientY - rect.top;
+            stampAlong(lastX, lastY);
+            start();
+          });
+
+          hero.addEventListener('mousemove', function(e) {
+            const rect = hero.getBoundingClientRect();
+            stampAlong(e.clientX - rect.left, e.clientY - rect.top);
+            start();
+          });
+
+          hero.addEventListener('mouseleave', function() {
+            lastX = null;
+            lastY = null;
+          });
+        })();
       }
-      revealOnScroll();
-      window.addEventListener('scroll', revealOnScroll, { passive: true });
+
+      // ── 统一 IntersectionObserver 滚动渐入 ──
+      const revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+      const reveals = document.querySelectorAll('.reveal');
+      if (prefersReducedMotion.matches) {
+        // reduced-motion: 立即显示所有元素
+        reveals.forEach(function(el) { el.classList.add('visible'); });
+      } else {
+        reveals.forEach(function(el) { revealObserver.observe(el); });
+      }
 
       // ── 赞助弹窗 ──
-      var sponsorBtn = document.getElementById('sponsorBtn');
-      var sponsorOverlay = document.getElementById('sponsorOverlay');
-      var sponsorClose = document.getElementById('sponsorClose');
+      const sponsorBtn = document.getElementById('sponsorBtn');
+      const sponsorOverlay = document.getElementById('sponsorOverlay');
+      const sponsorClose = document.getElementById('sponsorClose');
       if (sponsorBtn && sponsorOverlay) {
         sponsorBtn.addEventListener('click', function(e) {
           e.preventDefault();
