@@ -56,12 +56,12 @@ start index.html
 
 ## 部署
 
-GitHub Pages 自动部署，推送到 `master` 分支即生效：
+GitHub Pages 自动部署，推送到 `main` 分支即生效：
 
 ```bash
 git add .
 git commit -m "描述"
-git push origin master
+git push origin main
 ```
 
 ## License

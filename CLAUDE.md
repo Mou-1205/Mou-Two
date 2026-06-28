@@ -3,7 +3,7 @@
 ## 项目简介
 
 某炜的个人开发者网站，纯 HTML/CSS/JS 单文件，零框架依赖。
-部署：GitHub Pages → mouy.site（master 分支自动部署）
+部署：GitHub Pages → mouy.site（main 分支自动部署）
 
 ## 技术栈
 
@@ -52,7 +52,7 @@ Mou-Two/
 ```bash
 git add .
 git commit -m "描述"
-git push origin master
+git push origin main
 # GitHub Pages 自动部署到 mouy.site
 ```
 
