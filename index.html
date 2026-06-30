@@ -191,9 +191,10 @@
     .footer-col ul li a { text-decoration: none; color: var(--text-body); font-size: 14px; transition: color 0.2s ease; }
     .footer-col ul li a:hover { color: var(--text-primary); }
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 1px solid var(--border-light); }
-    .footer-bottom p { font-size: 13px; color: var(--text-muted); }
-    .footer-bottom p a { color: #2c5282; text-decoration: none; transition: color 0.2s ease; }
-    .footer-bottom p a:hover { color: #0f2440; }
+    .footer-bottom-text { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+    .footer-bottom-text p { font-size: 13px; color: var(--text-muted); }
+    .footer-bottom-text p a { color: #2c5282; text-decoration: none; transition: color 0.2s ease; }
+    .footer-bottom-text p a:hover { color: #0f2440; }
     .footer-social { display: flex; gap: 20px; }
     .footer-social a { color: var(--text-muted); transition: color 0.2s ease; }
     .footer-social a:hover { color: var(--text-primary); }
@@ -214,6 +215,7 @@
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .cta-box { padding: 60px 32px; }
       .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .footer-bottom-text { flex-direction: column; align-items: center; }
     }
     @media (hover: none), (max-width: 900px) {
       .hero-mask { display: none; }
@@ -221,9 +223,14 @@
     }
 
     /* ─── Mobile menu panel ─── */
-    .nav-mobile-panel { display: none; position: fixed; inset: 0; background: rgba(246,244,240,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 36px; list-style: none; }
-    .nav-mobile-panel.open { display: flex; }
-    .nav-mobile-panel a { position: relative; text-decoration: none; color: var(--text-primary); font-size: 22px; font-weight: 500; font-family: 'Instrument Serif', Georgia, serif; transition: color 0.25s ease; padding-bottom: 6px; }
+    .nav-mobile-panel { position: fixed; inset: 0; background: rgba(246,244,240,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 36px; list-style: none; opacity: 0; visibility: hidden; transform: translateY(-12px); transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.35s; }
+    .nav-mobile-panel.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-mobile-panel a { position: relative; text-decoration: none; color: var(--text-primary); font-size: 22px; font-weight: 500; font-family: 'Instrument Serif', Georgia, serif; transition: color 0.25s ease; padding-bottom: 6px; opacity: 0; transform: translateY(16px); transition: opacity 0.3s ease, transform 0.3s ease, color 0.25s ease; }
+    .nav-mobile-panel.open a { opacity: 1; transform: translateY(0); }
+    .nav-mobile-panel.open li:nth-child(1) a { transition-delay: 0.06s; }
+    .nav-mobile-panel.open li:nth-child(2) a { transition-delay: 0.12s; }
+    .nav-mobile-panel.open li:nth-child(3) a { transition-delay: 0.18s; }
+    .nav-mobile-panel.open li:nth-child(4) a { transition-delay: 0.24s; }
     .nav-mobile-panel a::after { content: ''; position: absolute; left: 4px; right: 4px; bottom: 0; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
     .nav-mobile-panel a:hover { color: var(--accent); }
     .nav-mobile-panel a:hover::after { transform: scaleX(1); }
@@ -379,7 +386,7 @@
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <h3>Rust 开发</h3>
           <p>使用 Rust 编写高性能、内存安全的系统级程序。零成本抽象、无数据竞争，从编译期杜绝隐患。</p>
@@ -393,7 +400,7 @@
         </div>
         <div class="feature-card reveal">
           <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+            <svg viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
           </div>
           <h3>JavaScript</h3>
           <p>使用 Node.js 和 JavaScript 构建全栈应用与工具链。从前端到服务端，一门语言贯穿始终。</p>
@@ -553,7 +560,10 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 某炜. 以好奇心构建，以用心交付。 <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noopener noreferrer" onclick="navigator.clipboard.writeText('粤ICP备2026081944号');return false;">粤ICP备2026081944号</a> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44011402001354" target="_blank" rel="noreferrer"><img src="assets/备案图标.png" alt="公安备案" style="height:14px;vertical-align:middle;margin-right:2px;margin-top:-2px">粤公网安备44011402001354号</a></p>
+        <div class="footer-bottom-text">
+          <p>&copy; 2026 某炜. 以好奇心构建，以用心交付。</p>
+          <p class="footer-icp"><a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noopener noreferrer" onclick="navigator.clipboard.writeText('粤ICP备2026081944号');return false;">粤ICP备2026081944号</a> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44011402001354" target="_blank" rel="noreferrer"><img src="assets/备案图标.png" alt="公安备案" style="height:14px;vertical-align:middle;margin-right:2px;margin-top:-2px">粤公网安备44011402001354号</a></p>
+        </div>
         <div class="footer-social">
           <a href="https://github.com/Mou-1205" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
@@ -602,13 +612,19 @@
         btn.classList.remove('open');
         panel.classList.remove('open');
         btn.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+        panel.addEventListener('transitionend', function handler() {
+          document.body.style.overflow = '';
+          document.body.style.paddingRight = '';
+          panel.removeEventListener('transitionend', handler);
+        });
       }
       function openMenu() {
         btn.classList.add('open');
         panel.classList.add('open');
         btn.setAttribute('aria-expanded', 'true');
+        const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
         document.body.style.overflow = 'hidden';
+        document.body.style.paddingRight = scrollBarWidth + 'px';
       }
 
       btn.addEventListener('click', function() {
