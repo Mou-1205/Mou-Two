@@ -595,7 +595,7 @@
       <button class="sponsor-close" id="sponsorClose" aria-label="关闭">
         <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
-      <img src="assets/赞助.jpg" alt="微信赞赏码" loading="lazy">
+      <img data-src="assets/赞助.jpg" alt="微信赞赏码" loading="lazy">
       <p>扫码请我喝杯咖啡 谢谢~~</p>
     </div>
   </div>
@@ -824,6 +824,8 @@
       if (sponsorBtn && sponsorOverlay) {
         sponsorBtn.addEventListener('click', function(e) {
           e.preventDefault();
+          const img = sponsorOverlay.querySelector('img[data-src]');
+          if (img && img.dataset.src) { img.src = img.dataset.src; img.removeAttribute('data-src'); }
           sponsorOverlay.classList.add('open');
         });
         sponsorClose.addEventListener('click', function() {
