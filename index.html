@@ -80,7 +80,7 @@
 
     /* ─── Hero ─── */
     .hero { position: relative; padding: 180px 0 140px; text-align: center; overflow: hidden; background: var(--bg); }
-    .hero-bg { position: absolute; inset: 0; background: url('assets/背景.png') center 100px / 1600px auto no-repeat; z-index: 0; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-size: 1600px auto; background-position: center 100px; background-repeat: no-repeat; }
     .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, var(--bg) 0%, transparent 18%, transparent 70%, var(--bg) 100%), linear-gradient(to right, var(--bg) 0%, transparent 15%, transparent 85%, var(--bg) 100%); pointer-events: none; }
     .hero-mask { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; font-size: 13px; color: var(--text-muted); font-weight: 500; margin-bottom: 36px; box-shadow: var(--shadow-sm); }
@@ -596,6 +596,12 @@
 
       // ── Reduced Motion 检测 ──
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      // ── 背景图按需加载（移动端跳过）──
+      const heroBg = document.querySelector('.hero-bg');
+      if (heroBg && window.matchMedia('(min-width: 901px)').matches && !prefersReducedMotion.matches) {
+        heroBg.style.backgroundImage = "url('assets/背景.png')";
+      }
 
       // ── 导航栏滚动 ──
       const nav = document.getElementById('nav');
