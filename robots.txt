@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mouy.site/sitemap.xml
+Sitemap: https://www.mouy.site/sitemap.xml
