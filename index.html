@@ -292,7 +292,7 @@
   </nav>
 
   <!-- 移动端菜单 -->
-  <ul class="nav-mobile-panel" id="mobilePanel">
+  <ul class="nav-mobile-panel" id="mobilePanel" aria-hidden="true" role="dialog" aria-label="移动导航菜单">
     <li><a href="#skills">技能</a></li>
     <li><a href="#journey">成长</a></li>
     <li><a href="#projects">项目</a></li>
@@ -628,16 +628,18 @@
         btn.classList.remove('open');
         panel.classList.remove('open');
         btn.setAttribute('aria-expanded', 'false');
+        panel.setAttribute('aria-hidden', 'true');
         panel.addEventListener('transitionend', function handler() {
           document.body.style.overflow = '';
           document.body.style.paddingRight = '';
           panel.removeEventListener('transitionend', handler);
-        });
+        }, { once: true });
       }
       function openMenu() {
         btn.classList.add('open');
         panel.classList.add('open');
         btn.setAttribute('aria-expanded', 'true');
+        panel.setAttribute('aria-hidden', 'false');
         const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
         document.body.style.overflow = 'hidden';
         document.body.style.paddingRight = scrollBarWidth + 'px';
