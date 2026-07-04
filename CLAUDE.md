@@ -1,4 +1,6 @@
-# Mou-Two — 个人网站
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## 项目简介
 
@@ -13,20 +15,28 @@
 - Canvas API（墨迹擦除动效）
 - IntersectionObserver（滚动渐入动画）
 
-## 文件结构
+## 常用命令
 
+```bash
+# 本地预览（直接用浏览器打开）
+start index.html
+
+# 部署
+git add . && git commit -m "描述" && git push origin main
+# GitHub Pages 自动部署到 mouy.site
 ```
-Mou-Two/
-├── index.html          # 主页面（HTML+CSS+JS 一体，~800行）
-├── assets/
-│   ├── 背景.png        # Hero 区背景图
-│   ├── 头像.jpg        # 导航栏头像
-│   ├── 赞助.jpg        # 赞赏二维码
-│   └── screenshot.png  # README 效果图
-├── README.md
-├── DEV.md              # 开发文档（本地，不推送）
-└── .gitignore
-```
+
+## 架构说明
+
+单文件架构，所有 CSS 和 JS 内联在 `index.html`（~800行）：
+
+- `<style>` 标签：CSS 变量定义 + 响应式布局 + 动画样式
+- `<script>` 标签：IntersectionObserver 滚动动画 + Canvas 墨迹擦除 + 弹窗交互
+
+关键实现：
+- 滚动渐入：IntersectionObserver 监听元素进入视口，触发 `.visible` 类
+- 墨迹擦除：Canvas 绘制遮罩，鼠标移动时清除像素实现擦除效果
+- 弹窗动画：使用 `visibility + opacity` 而非 `display: none`（后者无法 CSS 过渡）
 
 ## 设计系统
 
@@ -46,15 +56,6 @@ Mou-Two/
 - 滚动触发动画使用 IntersectionObserver，不用 scroll 事件监听
 - 外部链接加 `target="_blank" rel="noopener noreferrer"`
 - 中文内容，中文 HTML `lang="zh-CN"`
-
-## 部署
-
-```bash
-git add .
-git commit -m "描述"
-git push origin main
-# GitHub Pages 自动部署到 mouy.site
-```
 
 ## 注意事项
 
