@@ -19,7 +19,10 @@
 - IntersectionObserver（滚动渐入动画）
 - Clipboard API（邮箱复制）
 - localStorage（生日点击计数）
-- 自托管拉丁字体（Instrument Serif + DM Sans woff2）+ 中文系统字体栈（PingFang SC / 微软雅黑）
+- 自托管字体（无 Google Fonts 外链）：
+  - Instrument Serif（拉丁标题）
+  - DM Sans（拉丁正文，可变字重 400–500）
+  - Noto Serif SC（中文，**仅站内 440 字子集**，缺字回退系统字体）
 
 ## 特性
 
@@ -34,24 +37,32 @@
 - Konami Code 彩蛋（↑↑↓↓←→←→BA）
 - 移动端响应式适配
 - `prefers-reduced-motion` 无障碍支持
+- Esc 关闭弹窗、键盘可达
 - Umami 数据统计
 
 ## 项目结构
 
 ```
 Mou-Two/
-├── index.html              # 主页面（HTML+CSS+JS 一体，~950 行）
+├── index.html              # 主页面（HTML+CSS+JS 一体）
 ├── 404.html                # 自定义 404 页面
 ├── assets/
-│   ├── fonts/              # 自托管 woff2（Instrument Serif / DM Sans）
+│   ├── fonts/              # 自托管 woff2（约 260KB）
+│   │   ├── InstrumentSerif-400.woff2
+│   │   ├── InstrumentSerif-400-italic.woff2
+│   │   ├── DMSans.woff2
+│   │   └── NotoSerifSC.woff2   # 仅站内用字子集
 │   ├── 背景.png            # Hero 区背景图（原图，不压缩）
 │   ├── 头像.jpg            # 导航栏头像
 │   ├── 赞助.webp           # 赞赏二维码
-│   └── og.jpg              # Open Graph 分享图
+│   ├── 备案图标.png        # 公安备案图标
+│   └── og.jpg              # Open Graph 分享图（1200×630）
 ├── README.md
 ├── DEV.md                  # 开发文档
 └── .gitignore
 ```
+
+> **字体子集注意**：`NotoSerifSC.woff2` 只包含当前页面用到的字。文案若新增汉字，需要按新字表重新子集化，否则新字会回退到系统字体。
 
 ## 本地运行
 
@@ -64,7 +75,7 @@ start index.html
 
 ## 部署
 
-GitHub Pages 自动部署，推送到 `main` 分支即生效：
+线上站点：宝塔面板 `my.mouy.site`（`www.mouy.site`），推送到 GitHub `main` 后由 Git Webhook / 面板同步到站点目录。
 
 ```bash
 git add .

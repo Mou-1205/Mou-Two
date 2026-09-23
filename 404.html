@@ -20,6 +20,13 @@
       font-display: swap;
       src: url('assets/fonts/InstrumentSerif-400.woff2') format('woff2');
     }
+    @font-face {
+      font-family: 'Noto Serif SC';
+      font-style: normal;
+      font-weight: 400 500;
+      font-display: swap;
+      src: url('assets/fonts/NotoSerifSC.woff2') format('woff2');
+    }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
@@ -37,7 +44,7 @@
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
     body {
-      font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      font-family: 'DM Sans', 'Noto Serif SC', system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
       background-color: var(--bg);
       color: var(--text-body);
       font-size: 16px;
@@ -56,7 +63,7 @@
       z-index: 9999;
     }
 
-    h1, h2, h3 { font-family: 'Instrument Serif', 'Songti SC', 'Noto Serif SC', Georgia, serif; color: var(--text-primary); font-weight: 400; }
+    h1, h2, h3 { font-family: 'Instrument Serif', 'Noto Serif SC', 'Songti SC', Georgia, serif; color: var(--text-primary); font-weight: 400; }
 
     .page-404 {
       flex: 1;
