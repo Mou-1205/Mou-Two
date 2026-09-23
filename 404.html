@@ -4,10 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 — 页面走丢了</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#f6f4f0">
   <style>
+    @font-face {
+      font-family: 'DM Sans';
+      font-style: normal;
+      font-weight: 400 500;
+      font-display: swap;
+      src: url('assets/fonts/DMSans.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Instrument Serif';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('assets/fonts/InstrumentSerif-400.woff2') format('woff2');
+    }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
@@ -25,7 +37,7 @@
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
     body {
-      font-family: 'DM Sans', 'Noto Serif SC', system-ui, sans-serif;
+      font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
       background-color: var(--bg);
       color: var(--text-body);
       font-size: 16px;
@@ -44,7 +56,7 @@
       z-index: 9999;
     }
 
-    h1, h2, h3 { font-family: 'Instrument Serif', 'Noto Serif SC', Georgia, serif; color: var(--text-primary); font-weight: 400; }
+    h1, h2, h3 { font-family: 'Instrument Serif', 'Songti SC', 'Noto Serif SC', Georgia, serif; color: var(--text-primary); font-weight: 400; }
 
     .page-404 {
       flex: 1;
@@ -186,7 +198,7 @@
   </main>
 
   <footer class="footer-simple">
-    <p>&copy; 2026 <a href="/">某炜</a> — 以好奇心构建，以用心交付。</p>
+    <p>&copy; 2026 <a href="/">某炜</a> — 以好奇心构建，以清晰度交付。</p>
   </footer>
 
 </body>

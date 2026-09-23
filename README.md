@@ -4,7 +4,7 @@
 
 **🔗 在线访问：[www.mouy.site](https://www.mouy.site)**
 
-![网站效果图](assets/screenshot.png)
+![网站效果图](assets/og.jpg)
 
 ## 简介
 
@@ -19,7 +19,7 @@
 - IntersectionObserver（滚动渐入动画）
 - Clipboard API（邮箱复制）
 - localStorage（生日点击计数）
-- Google Fonts：Instrument Serif（标题）+ DM Sans（正文）+ Noto Serif SC（中文）
+- 自托管拉丁字体（Instrument Serif + DM Sans woff2）+ 中文系统字体栈（PingFang SC / 微软雅黑）
 
 ## 特性
 
@@ -28,7 +28,7 @@
 - 关于我弹窗（头像、技能标签、生日倒计时、坐标卡片）
 - 生日卡片点击计数器（localStorage 本地存储）
 - 技能卡片（3 类：底层与系统、全栈与移动端、工具与工程化）
-- 项目卡片带截图预览（Blog、Mou-Two）
+- 项目卡片用 SVG 插画封面（Blog 书桌静物 / 个人站水墨晕染）
 - 赞助弹窗（点击弹出二维码）
 - 自定义 404 页面
 - Konami Code 彩蛋（↑↑↓↓←→←→BA）
@@ -43,11 +43,11 @@ Mou-Two/
 ├── index.html              # 主页面（HTML+CSS+JS 一体，~950 行）
 ├── 404.html                # 自定义 404 页面
 ├── assets/
-│   ├── 背景.png            # Hero 区背景图
+│   ├── fonts/              # 自托管 woff2（Instrument Serif / DM Sans）
+│   ├── 背景.png            # Hero 区背景图（原图，不压缩）
 │   ├── 头像.jpg            # 导航栏头像
-│   ├── 赞助.jpg            # 赞赏二维码
-│   ├── blog-preview.png    # Blog 项目卡片截图
-│   └── screenshot.png      # README 效果图
+│   ├── 赞助.webp           # 赞赏二维码
+│   └── og.jpg              # Open Graph 分享图
 ├── README.md
 ├── DEV.md                  # 开发文档
 └── .gitignore

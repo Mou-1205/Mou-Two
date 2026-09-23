@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>某炜的个人站</title>
   <meta name="description" content="某炜 的个人网站。学生开发者，热衷底层技术、逆向工程与独立游戏。">
+  <meta name="theme-color" content="#f6f4f0">
   <link rel="canonical" href="https://www.mouy.site">
 
   <!-- Open Graph -->
@@ -12,14 +13,36 @@
   <meta property="og:url" content="https://www.mouy.site">
   <meta property="og:title" content="某炜的个人站">
   <meta property="og:description" content="学生开发者，热衷底层技术、逆向工程与独立游戏。">
-  <meta property="og:image" content="https://www.mouy.site/assets/screenshot.png">
+  <meta property="og:image" content="https://www.mouy.site/assets/og.jpg">
   <meta property="og:locale" content="zh_CN">
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234a7c59'/><text x='50' y='68' font-family='Georgia,serif' font-size='52' font-weight='bold' fill='white' text-anchor='middle'>M</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/InstrumentSerif-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/DMSans.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* ─── Local fonts (latin only; CJK uses system stack) ─── */
+    @font-face {
+      font-family: 'DM Sans';
+      font-style: normal;
+      font-weight: 400 500;
+      font-display: swap;
+      src: url('assets/fonts/DMSans.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Instrument Serif';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('assets/fonts/InstrumentSerif-400.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Instrument Serif';
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+      src: url('assets/fonts/InstrumentSerif-400-italic.woff2') format('woff2');
+    }
+
     /* ─── Reset & Base ─── */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -44,7 +67,7 @@
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
     body {
-      font-family: 'DM Sans', 'Noto Serif SC', system-ui, sans-serif;
+      font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
       background-color: var(--bg);
       color: var(--text-body);
       font-size: 16px;
@@ -63,7 +86,7 @@
     }
 
     /* ─── Typography ─── */
-    h1, h2, h3, h4 { font-family: 'Instrument Serif', 'Noto Serif SC', Georgia, serif; color: var(--text-primary); font-weight: 400; line-height: 1.15; }
+    h1, h2, h3, h4 { font-family: 'Instrument Serif', 'Songti SC', 'Noto Serif SC', 'Source Han Serif SC', SimSun, Georgia, serif; color: var(--text-primary); font-weight: 400; line-height: 1.15; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(24px, 5vw, 64px); }
 
     /* ─── Reveal Animation ─── */
@@ -100,7 +123,7 @@
     .hero h1 em { font-style: italic; color: var(--accent); }
     .hero-desc { font-size: 18px; color: var(--text-muted); max-width: 520px; margin: 0 auto 48px; line-height: 1.7; }
     .hero-actions { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 36px; border-radius: 100px; font-size: 15px; font-weight: 500; text-decoration: none; cursor: pointer; border: none; transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1); font-family: inherit; letter-spacing: 0.2px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 36px; border-radius: 100px; font-size: 15px; font-weight: 500; text-decoration: none; cursor: pointer; border: none; transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1); font-family: inherit; letter-spacing: 0.2px; appearance: none; -webkit-appearance: none; }
     .btn-primary { background: var(--text-primary); color: #fff; box-shadow: 0 2px 12px rgba(26, 26, 23, 0.15); }
     .btn-primary:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(74, 124, 89, 0.25); }
     .btn-secondary { background: var(--surface); color: var(--text-primary); border: 1px solid var(--border); }
@@ -174,7 +197,8 @@
     .testimonial-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: transparent; }
     .testimonial-card-body { padding: 32px; }
     .testimonial-card .project-preview { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; border-bottom: 1px solid var(--border-light); }
-    .testimonial-card .project-preview-placeholder { width: 100%; aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center; font-family: 'Instrument Serif', Georgia, serif; font-size: 48px; color: var(--accent); background: linear-gradient(160deg, var(--surface-alt) 0%, var(--accent-light) 100%); border-bottom: 1px solid var(--border-light); }
+    .testimonial-card .project-preview-placeholder { width: 100%; aspect-ratio: 16/10; display: block; border-bottom: 1px solid var(--border-light); overflow: hidden; background: var(--surface-alt); }
+    .testimonial-card .project-preview-placeholder svg { width: 100%; height: 100%; display: block; }
     .testimonial-quote { font-size: 16px; line-height: 1.8; color: var(--text-body); margin-bottom: 28px; font-style: italic; }
     .testimonial-quote::before { content: '\201C'; font-family: 'Instrument Serif', Georgia, serif; font-size: 48px; color: var(--accent); line-height: 0; vertical-align: -16px; margin-right: 4px; }
     .testimonial-author { display: flex; align-items: center; gap: 14px; }
@@ -286,8 +310,8 @@
     .about-meta-item { flex: 1; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease; }
     .about-meta-item:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(74,124,89,0.1); border-color: var(--accent); }
     .about-meta-label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); font-weight: 500; margin-bottom: 4px; }
-    .about-meta-value { display: block; font-family: 'Instrument Serif', 'Noto Serif SC', Georgia, serif; font-size: 16px; color: var(--text-primary); }
-    .about-meta-sub { display: block; font-family: 'Instrument Serif', 'Noto Serif SC', Georgia, serif; font-size: 13px; color: var(--text-muted); margin-top: 2px; font-style: italic; }
+    .about-meta-value { display: block; font-family: 'Instrument Serif', 'Songti SC', 'Noto Serif SC', Georgia, serif; font-size: 16px; color: var(--text-primary); }
+    .about-meta-sub { display: block; font-family: 'Instrument Serif', 'Songti SC', 'Noto Serif SC', Georgia, serif; font-size: 13px; color: var(--text-muted); margin-top: 2px; font-style: italic; }
     .about-birthday-secret { font-size: 12px; font-style: italic; color: #000; text-align: center; margin: 8px 0 0; opacity: 0; max-height: 0; overflow: hidden; transition: opacity 0.4s ease, max-height 0.4s ease; }
     .about-birthday-secret.show { opacity: 1; max-height: 30px; }
     a.about-meta-link { text-decoration: none; cursor: pointer; }
@@ -367,7 +391,7 @@
       <div class="hero-actions reveal">
         <a href="#projects" class="btn btn-primary">查看我的作品</a>
         <a href="https://mouy.site" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">我的博客</a>
-        <a href="javascript:void(0)" class="btn btn-secondary" id="aboutBtn">关于我</a>
+        <button type="button" class="btn btn-secondary" id="aboutBtn">关于我</button>
       </div>
 
       <!-- 浏览器模型：终端 / 代码 -->
@@ -502,7 +526,85 @@
       </div>
       <!-- 置顶项目 -->
       <a href="https://mouy.site" target="_blank" rel="noopener noreferrer" class="testimonial-card reveal" style="text-decoration:none;color:inherit;max-width:640px;margin:0 auto 8px;display:block;">
-        <img src="assets/blog-preview.png" alt="Mou Blog 预览" class="project-preview" loading="lazy">
+        <div class="project-preview-placeholder" aria-hidden="true">
+          <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="blogBg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f6f4f0"/>
+                <stop offset="50%" stop-color="#e8f0eb"/>
+                <stop offset="100%" stop-color="#f0ede6"/>
+              </linearGradient>
+              <linearGradient id="pageWarm" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#f7f3ec"/>
+              </linearGradient>
+              <filter id="softGrain" x="-5%" y="-5%" width="110%" height="110%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0 0.08  0 0 0 0.04 0"/>
+                <feBlend in="SourceGraphic" mode="multiply"/>
+              </filter>
+            </defs>
+            <rect width="640" height="400" fill="url(#blogBg)"/>
+            <!-- desk shadow -->
+            <ellipse cx="300" cy="320" rx="210" ry="28" fill="#1a1a17" opacity="0.06"/>
+            <!-- back sheets -->
+            <g transform="translate(150 70) rotate(-6 150 120)">
+              <path d="M20 30 Q18 12 40 10 L250 8 Q272 10 274 32 L280 210 Q278 232 256 234 L42 238 Q18 236 16 212 Z" fill="#faf8f5" stroke="#e2dfd8" stroke-width="1.5"/>
+            </g>
+            <g transform="translate(165 78) rotate(-2 150 120)">
+              <path d="M18 28 Q16 10 38 8 L248 10 Q270 12 272 34 L276 208 Q274 230 252 232 L40 230 Q16 228 14 206 Z" fill="#fffefb" stroke="#e2dfd8" stroke-width="1.5"/>
+            </g>
+            <!-- open notebook -->
+            <g transform="translate(185 95)">
+              <!-- left page -->
+              <path d="M12 40 Q8 18 32 14 L120 8 Q138 10 140 30 L148 200 Q146 222 124 226 L36 230 Q10 228 8 204 Z" fill="url(#pageWarm)" stroke="#d9d4cb" stroke-width="1.4"/>
+              <!-- right page -->
+              <path d="M148 30 Q150 8 174 10 L268 18 Q290 22 288 46 L280 214 Q276 236 252 234 L160 226 Q140 222 142 198 Z" fill="url(#pageWarm)" stroke="#d9d4cb" stroke-width="1.4"/>
+              <!-- spine -->
+              <path d="M140 30 Q148 28 152 32 L158 208 Q152 222 142 218" fill="none" stroke="#c9c2b6" stroke-width="2" stroke-linecap="round"/>
+              <!-- ruled lines left -->
+              <g stroke="#c5c0b6" stroke-width="2" stroke-linecap="round" opacity="0.55">
+                <line x1="28" y1="58" x2="120" y2="52"/>
+                <line x1="30" y1="82" x2="118" y2="76"/>
+                <line x1="32" y1="106" x2="116" y2="100"/>
+                <line x1="34" y1="130" x2="108" y2="124"/>
+                <line x1="36" y1="154" x2="100" y2="148"/>
+              </g>
+              <!-- handwritten abstract strokes right -->
+              <g stroke="#1a1a17" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.55">
+                <path d="M170 60 Q190 52 210 58 T250 54"/>
+                <path d="M172 86 Q198 78 228 84"/>
+                <path d="M174 112 Q200 104 240 110"/>
+                <path d="M176 138 Q196 132 220 136"/>
+                <path d="M178 164 Q192 158 208 162"/>
+              </g>
+              <!-- green title stroke -->
+              <path d="M168 42 Q198 34 236 40" stroke="#4a7c59" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+            </g>
+            <!-- lifted corner sheet -->
+            <g transform="translate(420 120) rotate(8)">
+              <path d="M10 20 Q8 6 26 4 L120 2 Q138 4 140 22 L136 120 Q100 140 70 128 Q30 148 8 110 Z" fill="#ffffff" stroke="#e2dfd8" stroke-width="1.4"/>
+              <path d="M120 2 Q138 4 140 22 L128 48 Q110 30 120 2 Z" fill="#ebe6dc" stroke="#e2dfd8" stroke-width="1"/>
+              <g stroke="#c5c0b6" stroke-width="1.8" stroke-linecap="round" opacity="0.5">
+                <line x1="28" y1="40" x2="110" y2="36"/>
+                <line x1="30" y1="62" x2="108" y2="58"/>
+                <line x1="32" y1="84" x2="96" y2="80"/>
+              </g>
+            </g>
+            <!-- fountain pen -->
+            <g transform="translate(430 250) rotate(-28)">
+              <path d="M8 18 L150 8 Q162 10 160 22 L158 34 Q156 44 144 44 L10 50 Q0 48 2 36 Z" fill="#4a7c59"/>
+              <path d="M150 8 Q168 12 175 28 L158 34 Q156 20 150 8 Z" fill="#3d6849"/>
+              <path d="M0 28 L22 22 L28 36 L6 42 Z" fill="#1a1a17" opacity="0.85"/>
+              <circle cx="130" cy="26" r="4" fill="#e8f0eb" opacity="0.7"/>
+            </g>
+            <!-- floating idea marks -->
+            <circle cx="520" cy="100" r="7" fill="#4a7c59" opacity="0.35"/>
+            <circle cx="548" cy="78" r="4" fill="#4a7c59" opacity="0.25"/>
+            <circle cx="560" cy="110" r="3" fill="#1a1a17" opacity="0.2"/>
+            <path d="M500 140 Q520 128 545 136" stroke="#4a7c59" stroke-width="2" fill="none" opacity="0.4" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div class="testimonial-card-body">
           <p class="testimonial-quote">我的技术博客 —— 记录学习笔记、项目实践与底层思考。基于 Astro 构建，支持全文搜索、Obsidian 同步和暗色模式。</p>
           <div class="testimonial-author">
@@ -516,7 +618,64 @@
       </a>
       <div class="testimonials-grid">
         <a href="https://github.com/Mou-1205/Mou-Two" target="_blank" rel="noopener noreferrer" class="testimonial-card reveal" style="text-decoration:none;color:inherit;">
-          <img src="assets/screenshot.png" alt="Mou-Two 个人网站预览" class="project-preview" loading="lazy">
+          <div class="project-preview-placeholder" aria-hidden="true">
+            <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="siteBg" x1="0.2" y1="0" x2="0.8" y2="1">
+                  <stop offset="0%" stop-color="#f6f4f0"/>
+                  <stop offset="100%" stop-color="#e4ede6"/>
+                </linearGradient>
+                <radialGradient id="wash1" cx="40%" cy="40%" r="60%">
+                  <stop offset="0%" stop-color="#4a7c59" stop-opacity="0.5"/>
+                  <stop offset="55%" stop-color="#4a7c59" stop-opacity="0.18"/>
+                  <stop offset="100%" stop-color="#4a7c59" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="wash2" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#3d6849" stop-opacity="0.32"/>
+                  <stop offset="100%" stop-color="#3d6849" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="washInk" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#1a1a17" stop-opacity="0.2"/>
+                  <stop offset="100%" stop-color="#1a1a17" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="640" height="400" fill="url(#siteBg)"/>
+              <!-- sumi wash blooms -->
+              <ellipse cx="170" cy="230" rx="150" ry="120" fill="url(#wash1)" transform="rotate(-12 170 230)"/>
+              <ellipse cx="300" cy="300" rx="110" ry="80" fill="url(#wash2)" transform="rotate(18 300 300)"/>
+              <ellipse cx="480" cy="150" rx="130" ry="100" fill="url(#wash1)" transform="rotate(8 480 150)"/>
+              <ellipse cx="540" cy="280" rx="90" ry="70" fill="url(#washInk)"/>
+              <!-- wet edge accents -->
+              <path d="M60 250 Q120 160 200 200 T340 180 Q380 220 320 270 T160 290 Q90 300 60 250 Z" fill="#4a7c59" opacity="0.08"/>
+              <!-- dry-brush curves -->
+              <g fill="none" stroke-linecap="round">
+                <path d="M70 280 C140 140 220 320 310 170 S470 80 580 190" stroke="#4a7c59" stroke-width="3" opacity="0.55"/>
+                <path d="M100 320 C180 220 260 340 360 230 S500 150 600 240" stroke="#1a1a17" stroke-width="1.8" opacity="0.28"/>
+                <path d="M40 180 C100 120 160 200 230 130" stroke="#4a7c59" stroke-width="2" opacity="0.3"/>
+              </g>
+              <!-- bristle flecks -->
+              <g fill="#4a7c59" opacity="0.35">
+                <ellipse cx="210" cy="140" rx="6" ry="3" transform="rotate(-30 210 140)"/>
+                <ellipse cx="390" cy="250" rx="5" ry="2.5" transform="rotate(20 390 250)"/>
+                <ellipse cx="500" cy="200" rx="7" ry="3" transform="rotate(-10 500 200)"/>
+              </g>
+              <!-- floating browser window -->
+              <g transform="translate(245 118)">
+                <rect x="8" y="12" width="170" height="125" rx="14" fill="#1a1a17" opacity="0.08"/>
+                <rect x="0" y="0" width="170" height="125" rx="14" fill="#fffefb" stroke="#d9d4cb" stroke-width="1.5"/>
+                <path d="M0 14 Q0 0 14 0 L156 0 Q170 0 170 14 L170 28 L0 28 Z" fill="#f0ede6"/>
+                <circle cx="18" cy="14" r="4" fill="#e8706a"/>
+                <circle cx="34" cy="14" r="4" fill="#e8c547"/>
+                <circle cx="50" cy="14" r="4" fill="#5bc472"/>
+                <rect x="16" y="46" width="88" height="8" rx="4" fill="#1a1a17" opacity="0.55"/>
+                <rect x="16" y="68" width="120" height="6" rx="3" fill="#8a8a82" opacity="0.4"/>
+                <rect x="16" y="86" width="96" height="6" rx="3" fill="#8a8a82" opacity="0.32"/>
+                <rect x="16" y="104" width="54" height="6" rx="3" fill="#4a7c59" opacity="0.55"/>
+              </g>
+              <!-- soft ground shadow under window -->
+              <ellipse cx="330" cy="265" rx="70" ry="10" fill="#1a1a17" opacity="0.06"/>
+            </svg>
+          </div>
           <div class="testimonial-card-body">
             <p class="testimonial-quote">我的个人网站 —— 纯 HTML/CSS/JS 单文件，墨迹擦除动效、滚动渐入动画、响应式布局。零依赖，从零构建。</p>
             <div class="testimonial-author">
@@ -592,7 +751,7 @@
       <div class="footer-bottom">
         <div class="footer-bottom-text">
           <p>&copy; 2026 某炜. 以好奇心构建，以用心交付。</p>
-          <p class="footer-icp"><a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noopener noreferrer" onclick="navigator.clipboard.writeText('粤ICP备2026081944号');">粤ICP备2026081944号</a> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44011402001354" target="_blank" rel="noreferrer"><img src="assets/备案图标.png" alt="公安备案" style="height:14px;vertical-align:middle;margin-right:2px;margin-top:-2px">粤公网安备44011402001354号</a></p>
+          <p class="footer-icp"><a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noopener noreferrer" onclick="navigator.clipboard.writeText('粤ICP备2026081944号');">粤ICP备2026081944号</a> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44011402001354" target="_blank" rel="noopener noreferrer"><img src="assets/备案图标.png" alt="公安备案" style="height:14px;vertical-align:middle;margin-right:2px;margin-top:-2px">粤公网安备44011402001354号</a></p>
         </div>
         <div class="footer-social">
           <a href="https://github.com/Mou-1205" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
@@ -651,7 +810,7 @@
           <p class="about-modal-intro">Hi，我是<strong>某炜</strong>，一个来自广州的学生开发者。平时喜欢写写代码、玩玩各种 AI Agent 工具，探索技术的边界。相信好的代码应该是清晰的、有表达力的，就像好的文字一样。目标是成为全栈大佬——虽然路还很长，但每一步都算数。</p>
           <p class="about-modal-note">* 内容均为 AI 生成，如有误请指出。</p>
           <div class="about-modal-meta">
-            <div class="about-meta-item" id="birthdayCard">
+            <div class="about-meta-item" id="birthdayCard" role="button" tabindex="0">
               <span class="about-meta-label">生日</span>
               <span class="about-meta-value">2007-12-05</span>
               <span class="about-meta-sub" id="birthdayCountdown"></span>
@@ -673,7 +832,7 @@
       <button class="sponsor-close" id="sponsorClose" aria-label="关闭">
         <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
-      <img data-src="assets/赞助.jpg" alt="微信赞赏码" loading="lazy">
+      <img data-src="assets/赞助.webp" alt="微信赞赏码" loading="lazy">
       <p>扫码请我喝杯咖啡 谢谢~~</p>
     </div>
   </div>
@@ -953,12 +1112,16 @@
       const birthdayCard = document.getElementById('birthdayCard');
       const birthdaySecret = document.getElementById('birthdaySecret');
       if (birthdayCard && birthdaySecret) {
-        birthdayCard.addEventListener('click', function() {
-          let count = parseInt(localStorage.getItem('birthdayClicks') || '0', 10);
-          count++;
-          localStorage.setItem('birthdayClicks', count);
-          birthdaySecret.textContent = '谢谢!!! 已有' + count + '人点击';
+        function showBirthdaySecret() {
+          birthdaySecret.textContent = '谢谢!!!';
           birthdaySecret.classList.add('show');
+        }
+        birthdayCard.addEventListener('click', showBirthdaySecret);
+        birthdayCard.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            showBirthdaySecret();
+          }
         });
       }
       const aboutSponsor = document.getElementById('aboutSponsor');
@@ -987,21 +1150,34 @@
         });
       }
 
+      // ── Esc 关闭弹窗 ──
+      document.addEventListener('keydown', function(e) {
+        if (e.key !== 'Escape') return;
+        if (aboutOverlay && aboutOverlay.classList.contains('open')) {
+          aboutOverlay.classList.remove('open');
+          return;
+        }
+        if (sponsorOverlay && sponsorOverlay.classList.contains('open')) {
+          sponsorOverlay.classList.remove('open');
+        }
+      });
+
       // ── Konami Code 彩蛋 ──
-      const konamiCode = [38,38,40,40,37,39,37,39,66,65];
+      const konamiKeys = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
       let konamiIndex = 0;
       let konamiActive = false;
       document.addEventListener('keydown', function(e) {
         if (konamiActive) return;
-        if (e.keyCode === konamiCode[konamiIndex]) {
+        const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+        if (key === konamiKeys[konamiIndex]) {
           konamiIndex++;
-          if (konamiIndex === konamiCode.length) {
+          if (konamiIndex === konamiKeys.length) {
             konamiActive = true;
             konamiIndex = 0;
             triggerKonami();
           }
         } else {
-          konamiIndex = e.keyCode === konamiCode[0] ? 1 : 0;
+          konamiIndex = key === konamiKeys[0] ? 1 : 0;
         }
       });
 
